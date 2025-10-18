@@ -2,8 +2,13 @@ const { Router } = require('express')
 const newRouter = Router();
 const { messages } = require('../data/messageData') 
 
+const links = [
+    {href: '/', text: 'Home'},
+    {href: '/new/form', text: "New Message"}
+]
+
 newRouter.get('/form', (req, res) => {
-    res.render('form');
+    res.render('form', { links: links });
 })
 
 newRouter.post('/', (req, res) => {
