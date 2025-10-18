@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title>Mini Messageboard</title>
+    </head>
+    <body>
+        <h1>Messageboard</h1>
+
+        <div>
+            <% messages.forEach((message) => { %>
+                <div>
+                    <h3><%= message.text %></h3>
+                    <p><%= message.user %></p>
+                    <p><%= message.added.toString() %></p>
+                </div>
+            <% }); %>
+        </div>
+    </body>
+</html>
