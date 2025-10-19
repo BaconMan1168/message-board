@@ -1,7 +1,17 @@
 {
+  "name": "mini-messageboard",
+  "version": "1.0.0",
+  "description": "A message board",
+  "main": "app.js",
+  "scripts": {
+    "build": "echo 'Nothing to build'",
+    "start": "node server.js"
+  },
   "dependencies": {
-    "ejs": "^3.1.10",
     "express": "^5.1.0",
-    "react": "^19.2.0"
+    "ejs": "^3.1.10"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }
