@@ -1,6 +1,7 @@
 const { Client } = require('pg');
 const { argv } = require('node:process')
-require("dotenv").config();
+const path = require('path')
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') })
 
 const SQL = `
 CREATE TABLE IF NOT EXISTS messages (
@@ -22,7 +23,7 @@ VALUES
 
 async function main() {
   console.log("seeding...");
-  const connectionString = argv[2] || "postgresql://danielguirao:baconater@localhost:5432/message_board";
+  const connectionString = argv[2] || process.env.DATABASE_URL || "postgresql://danielguirao:baconater@localhost:5432/message_board";
   const client = new Client({
     connectionString,
     ssl: connectionString.includes('render.com')
