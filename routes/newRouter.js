@@ -1,22 +1,11 @@
 const { Router } = require('express')
 const newRouter = Router();
-const { messages } = require('../data/messageData') 
+const messageController = require('../controllers/messageController')
 
-const links = [
-    {href: '/', text: 'Home'},
-    {href: '/new/form', text: "New Message"}
-]
 
-newRouter.get('/form', (req, res) => {
-    res.render('form', { links: links });
-})
+newRouter.get('/form', messageController.getMessageForm);
 
-newRouter.post('/', (req, res) => {
-    const messageText = req.body.messageText;
-    const messageUser = req.body.authorName;
 
-    messages.push({ text: messageText, user: messageUser, added: new Date() });
-    res.redirect('/');
-})
+newRouter.post('/', messageController.postMessageForm)
 
 module.exports = newRouter;
