@@ -6,5 +6,8 @@ require("dotenv").config();
 const connectionString = argv[2] || "postgresql://danielguirao:baconater@localhost:5432/message_board";
 
 module.exports = new Pool({
-  connectionString
+  connectionString,
+   ssl: connectionString.includes('render.com')
+   ? { rejectUnauthorized: false }  
+   : false                          
 });

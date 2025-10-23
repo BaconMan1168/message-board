@@ -24,7 +24,10 @@ async function main() {
   console.log("seeding...");
   const connectionString = argv[2] || "postgresql://danielguirao:baconater@localhost:5432/message_board";
   const client = new Client({
-    connectionString
+    connectionString,
+    ssl: connectionString.includes('render.com')
+      ? { rejectUnauthorized: false }
+      : false
   });
 
   await client.connect();
